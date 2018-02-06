@@ -25,8 +25,11 @@ import keras
 
 
 def main():
+    CLASSIFICATION_MODEL_FILE = r"C:\Users\ORI\.keras\model_signature.hdf5"
+    AUTO_ENCODER_MODEL_FILE = r"C:\temp\weights_862494.29-0.42.hdf5"
+    classification_model = keras.models.load_model(CLASSIFICATION_MODEL_FILE)
 
-
+    auto_encoder_model = keras.models.load_model(AUTO_ENCODER_MODEL_FILE)
     all_subjects = [
         "gcd",
     ];
@@ -45,11 +48,7 @@ def main():
     # this is the size of our encoded representations
 
 
-    classification_model = keras.models.load_model(r"C:\Users\ORI\.keras\model_signature.hdf5")
 
-
-
-    auto_encoder_model  = keras.models.load_model(r"C:\temp\weights_862494.29-0.42.hdf5")
 
 
     auto_encoder_model.summary()
