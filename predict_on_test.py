@@ -10,7 +10,7 @@ from keras.models import Model
 from datetime import datetime
 
 from keras.optimizers import Adam
-from run_multi_subject_experiment import prepare_data_for_experiment
+from run_multi_subject_experiment import prepare_data_for_experiment, predict_using_model
 import matplotlib.pyplot as plt
 
 
@@ -69,9 +69,12 @@ def main():
 
 
     decoded_imgs = auto_encoder_model.predict(x_test,verbose=1)
+
+
     import numpy as np
-    print("evaluation on test samples",classification_model.evaluate(x_test.reshape(-1, 25, 55), test_tags))
-    print("evaluation on auto encoder samples", classification_model.evaluate(decoded_imgs.reshape(-1, 25, 55), test_tags))
+
+    print("evaluation on test samples",predict_using_model(classification_model, x_test.reshape(-1, 25, 55),test_tags))
+    print("evaluation on auto encoder samples", predict_using_model(classification_model, decoded_imgs.reshape(-1, 25, 55), test_tags))
 
 
     np.save(r'c:\temp\test_data_gcd.npy', dict(decoded_imgs=decoded_imgs, x_test=x_test))
