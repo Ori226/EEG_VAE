@@ -1,9 +1,5 @@
-"""
-The things needed to be changes:
-1. the tutorial version used 'binary_crossentropy' as an objective function. This was possible because the images
-were binary images. Here I'll try to use mse instead.
-
-"""
+import keras
+print(keras.__version__)
 from keras.callbacks import ReduceLROnPlateau
 from keras.layers import Input, Dense, Reshape, Conv2D, Flatten, BatchNormalization, Activation, Conv2DTranspose
 from keras.models import Model
@@ -13,6 +9,9 @@ from datetime import datetime
 from keras.optimizers import Adam
 from run_multi_subject_experiment import prepare_data_for_experiment
 import matplotlib.pyplot as plt
+
+
+
 
 dt = datetime.now()
 print(dt.microsecond)
